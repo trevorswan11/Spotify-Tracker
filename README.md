@@ -32,6 +32,7 @@ You can also run `pip install -r requirements.txt` in this directory.
 - The database is stored as `song_history.db`, and is accessed by functions in the code. This must be created before the script can run.
 - You can use `get_spotify_stats.py` file in the `wrapped` folder to get your current statistics.
 - I recommend making a python virtual environment to run this project, but it is not required.
+- When you run `save_listening_data.py` for the first time, it should open a website asking for access to your spotify account. After you press agree, the code should save your data to `song_history.db`.
 
 ---
 
