@@ -5,8 +5,8 @@ A simple app that store the most recent songs played on spotify. The data is sto
 Please make sure you have a .env file in your folder with the following variables:
 
 ```dotenv
-SPOTIFY_CLIENT_ID=your_client_id
-SPOTIFY_CLIENT_SECRET=your_client_secret
+SPOTIFY_CLIENT_ID="your_client_id"
+SPOTIFY_CLIENT_SECRET="your_client_secret"
 ```
 
 ## Python Modules
@@ -33,7 +33,8 @@ You can also run `pip install -r requirements.txt` in this directory.
 - You can use `get_spotify_stats.py` file in the `wrapped` folder to get your current statistics.
 - I recommend making a python virtual environment to run this project, but it is not required.
 - When you run `save_listening_data.py` for the first time, it should open a website asking for access to your spotify account. After you press agree, the code should save your data to `song_history.db`.
+- You can make the project by making the file `make.sh` executable and running `./make.sh` on unix based systems.
 
 ---
 
-*This was inspired by [@lizstip](https://www.tiktok.com/@lizstip?_t=8rxwoJUhOo6&_r=1) on TikTok*
+*This was inspired by [@lizstip](https://www.tiktok.com/@lizstip?_t=8rxwoJUhOo6&_r=1) on TikTok, and obviously takes heavy inspiration from the official (Spotify Wrapped)[https://www.spotify.com/us/wrapped/].*

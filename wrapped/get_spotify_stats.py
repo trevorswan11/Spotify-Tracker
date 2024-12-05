@@ -1,6 +1,7 @@
 import sqlite3
 from pathlib import Path
 from collections import Counter
+import sys
 
 # SQLite database file
 DB_FILE = 'song_history.db'
@@ -49,43 +50,60 @@ def get_top_artists(limit=5):
     artist_counts = Counter(artist for artist_list in artists for artist in artist_list.split(', '))
     return artist_counts.most_common(limit)
 
-def main():
+def main(year: str = None):
+    # Add a header
+    if year is not None:
+        print(f"# Your {year} Spotify Wrapped!")
+        print('Compiled with the help of Spotify\'s API and the spotipy module.\n')
+    
     # Total number of songs
     total_songs = get_total_songs()
-    print(f"Total unique songs listened: {total_songs}\n")
+    print('## Unique Songs')
+    print(f"You listened to {total_songs} unique songs this year!\n")
 
     # Total minutes listened
     total_minutes = get_total_minutes_listened()
-    print(f"Total minutes listened: {total_minutes:.2f}\n")
+    print('## Minutes Listened')
+    print(f"This year, you listened to {total_minutes:.2f} minutes of music!\n")
 
     # Top 5 most popular songs
-    print("Top 5 most popular songs:")
+    print('## Your Top 5 Songs')
     for i, (track_name, play_count) in enumerate(get_top_songs(), start=1):
         print(f"{i}. {track_name} - {play_count} plays")
     print()
 
     # Top 5 most popular artists
-    print("Top 5 most popular artists:")
+    print('## Your Top 5 Songs')
     for i, (artist, play_count) in enumerate(get_top_artists(), start=1):
         print(f"{i}. {artist} - {play_count} plays")
+    
+    # Thank you
+    if (year is not None):
+        print('\n## What a Year!')
+        print('Thanks for using my bootleg spotify wrapped, be sure to check out the official on [Spotify\'s website](https://www.spotify.com/us/wrapped/)!')
 
 if __name__ == '__main__':
-    # Check if the user wants to query an older database
-    doOlder = ['y', 'yes']
-    older = input("Do you want to query an old db (y/n): ")
-    
-    try:
-        # Check the users input to proceed
-        if older.lower() in doOlder:
-            which_year = input("Which year would you like to query: ")
-            DB_FILE = f"history/{which_year}_{DB_FILE}"
-        else:
-            DB_FILE = f"../{DB_FILE}"
+    if len(sys.argv) == 0:
+        # Check if the user wants to query an older database
+        doOlder = ['y', 'yes']
+        older = input("Do you want to query an old db (y/n): ")
         
-        # Check if the requested DB exists
-        if not Path(DB_FILE).exists(): 
-            raise FileNotFoundError("Database not found with specified path.")
-    except:
-        DB_FILE = f"../{DB_FILE}"
+        try:
+            # Check the users input to proceed
+            if older.lower() in doOlder:
+                which_year = input("Which year would you like to query: ")
+                DB_FILE = f"history/{which_year}_{DB_FILE}"
+            else:
+                DB_FILE = f"../{DB_FILE}"
+            
+            # Check if the requested DB exists
+            if not Path(DB_FILE).exists(): 
+                raise FileNotFoundError("Database not found with specified path.")
+        except:
+            DB_FILE = f"../{DB_FILE}"
+        main()
 
-    main()
+    # Allows proper calling from get_stats.sh
+    else:
+        DB_FILE = f"../{DB_FILE}"
+        main(sys.argv[1]) 
