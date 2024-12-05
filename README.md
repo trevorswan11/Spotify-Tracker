@@ -10,6 +10,7 @@ Please make sure you have a .env file in your folder with the following variable
 ```dotenv
 SPOTIFY_CLIENT_ID="your_client_id"
 SPOTIFY_CLIENT_SECRET="your_client_secret"
+SPOTIFY_REFRESH_TOKEN="your_refresh_token"
 ```
 
 ## Python Modules
@@ -19,6 +20,7 @@ Please make sure you have the following pip modules installed:
 pip install spotipy
 pip install sqlite3
 pip install python-dotenv
+pip install requests
 ```
 
 You can also run `pip install -r requirements.txt` in this directory.
@@ -30,6 +32,7 @@ You can also run `pip install -r requirements.txt` in this directory.
 - If you want to align your listening data with the standard spotify schedule, you can set up a system task to store and batch delete the database.
 - I recommend storing copies of the data in a folder named `wrapped/history`, so that you can run stats on any year you'd like.
 - When creating your app on [spotify's developer website](https://developer.spotify.com/), you'll be prompted for expected APIs and redirect URIs. I use `http://localhost:8888/callback` as my redirect URI, and chose `Web API` for my APIs used. These are modifiable in the future, just make sure your code reflects any changes.
+- Run `i_want_access.py` in order to get the refresh url and place this in your `.env` file.
 
 ## Other
 - The database is stored as `song_history.db`, and is accessed by functions in the code. This must be created before the script can run.
