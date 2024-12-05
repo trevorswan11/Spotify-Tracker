@@ -10,5 +10,5 @@ echo SPOTIFY_CLIENT_ID="your_client_id // TODO" >> .env
 echo SPOTIFY_CLIENT_SECRET="your_client_secret // TODO" >> .env
 cd wrapped
 mkdir history
-mkdir mywrapped
+# mkdir mywrapped # Only needed if running a shell script to save data to this folder
 echo "All necessary project files created."
