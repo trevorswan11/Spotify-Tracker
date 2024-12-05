@@ -24,11 +24,11 @@ pip install python-dotenv
 ## Things to Consider
 - Make sure your spotify token has the correct scopes, specifically include the `user-read-recently-played` scope for your client.
 - If you want to align your listening data with the standard spotify schedule, you can set up a system task to store and batch delete the database.
-- I recommend storing copies of the data in a folder named `wrapped`, so that you can run stats on any year you'd like.
+- I recommend storing copies of the data in a folder named `wrapped/history`, so that you can run stats on any year you'd like.
 
 ## Other
 Also, the database is stored as `song_history.db`, and is accessed by functions in the code. You can use `get_spotify_stats.py` file in the `wrapped` folder to get your current statistics.
 
 ---
 
-*This was inspired by @lizstip on TikTok*
+*This was inspired by [@lizstip](https://www.tiktok.com/@lizstip?_t=8rxwoJUhOo6&_r=1) on TikTok*
