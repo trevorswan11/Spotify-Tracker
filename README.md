@@ -2,7 +2,7 @@
 A simple app that store the most recent songs played on spotify. The data is stored in a sqlite database, and makes sure to ignore overlapping songs. For best results, run the bash script on a timer so that it updates every hour or half hour.
 
 ## Getting Started
-Run `git clone https://github.com/trevorswan11/Spotify-Tracker` to clone this repository or download the zip file through github. To make sure the project is ready to go, run `./make.sh`.
+Run `git clone https://github.com/trevorswan11/Spotify-Tracker` to clone this repository or download the zip file through github. To make sure the project is ready to be configured, run `./make.sh`.
 
 ## Environment Variables
 Please make sure you have a .env file in your folder with the following variables:
