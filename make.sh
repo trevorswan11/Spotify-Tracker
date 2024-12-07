@@ -50,9 +50,9 @@ echo "BACKUP_PATH=path to backup location" >> backup.sh
 echo "DATE=(date +%F_%H-%M-%S)" >> backup.sh
 echo "TRACKER_BACKUP_NAME=desired name of backup file" >> backup.sh
 echo "" >> backup.sh
-echo "echo "(date): Backup Started" >> BACKUP_PATH/backup.log" >> backup.sh
+echo "echo "date: Backup Started" >> BACKUP_PATH/backup.log" >> backup.sh
 echo "tar -czf "BACKUP_PATH/TRACKER_BACKUP_NAME" -C "TRACKER_PATH" --exclude='.git' ." >> backup.sh
-echo "echo "(date): Backup Finished" >> BACKUP_PATH/backup.log" >> backup.sh
+echo "echo "date: Backup Finished" >> BACKUP_PATH/backup.log" >> backup.sh
 echo "echo "" >> BACKUP_PATH/backup.log" >> backup.sh
 echo "" >> backup.sh
 echo "cd TRACKER_PATH/logs" >> backup.sh
@@ -70,7 +70,7 @@ echo "DIRECTORY=path to spotify tracker" >> run_save_data.sh
 echo "cd DIRECTORY" >> run_save_data.sh
 echo "source myenv/bin/activate" >> run_save_data.sh
 echo "python save_listening_data.py" >> run_save_data.sh
-echo "echo "Saved at (date)" >> logs/save_data.log" >> run_save_data.sh
+echo "echo "Saved at date" >> logs/save_data.log" >> run_save_data.sh
 echo "deactivate" >> run_save_data.sh
 
 
@@ -108,16 +108,16 @@ echo "YEAR=(date +"%Y")" >> new_cycle.sh
 echo "TRACKER_BACKUP_NAME=desired name of backup file" >> new_cycle.sh
 echo "WRAPPED="TRACKER_PATH/wrapped"" >> new_cycle.sh
 echo "" >> new_cycle.sh
-echo "echo "(date): Backup Started" >> BACKUP_PATH/backup.log" >> new_cycle.sh
+echo "echo "date: Backup Started" >> BACKUP_PATH/backup.log" >> new_cycle.sh
 echo "tar -czf "BACKUP_PATH/TRACKER_BACKUP_NAME" -C "TRACKER_PATH" --exclude='.git' ." >> new_cycle.sh
-echo "echo "(date): Backup Finished" >> BACKUP_PATH/backup.log" >> new_cycle.sh
+echo "echo "date: Backup Finished" >> BACKUP_PATH/backup.log" >> new_cycle.sh
 echo "echo "" >> BACKUP_PATH/backup.log" >> new_cycle.sh
 echo "" >> new_cycle.sh
 echo "cd TRACKER_PATH/wrapped/mywrapped" >> new_cycle.sh
-echo "echo "(date): Reset Started" >> ../reset.log" >> new_cycle.sh
+echo "echo "date: Reset Started" >> ../reset.log" >> new_cycle.sh
 echo "./wrapped.sh" >> new_cycle.sh
 echo "mv TRACKER_PATH/song_history.db ../history/{YEAR}_song_history.db" >> new_cycle.sh
-echo "echo "(date): Reset Finished" >> ../reset.log" >> new_cycle.sh
+echo "echo "date: Reset Finished" >> ../reset.log" >> new_cycle.sh
 echo "echo "" >> ../reset.log" >> new_cycle.sh
 echo "" >> new_cycle.sh
 echo "cd TRACKER_PATH" >> new_cycle.sh
