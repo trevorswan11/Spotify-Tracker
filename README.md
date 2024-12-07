@@ -40,7 +40,9 @@ You can also run `pip install -r requirements.txt` in this directory.
 - I recommend making a python virtual environment to run this project, but it is not required.
 - When you run `save_listening_data.py` for the first time, it should open a website asking for access to your spotify account. After you press agree, the code should save your data to `song_history.db`.
 - You can make the project by making the file `make.sh` executable and running `./make.sh` on unix based systems. This is much more fleshed out in this branch and will provide you with all necessary files for automation, though you may need to make some file changes in the form of text changes and also folder locations. Not every file must be used to properly automate :)
-- Varaibles created using make.sh are not referenced correctly, this is left to the user to fix.
+- Varaibles created using `make.sh` are not referenced correctly, this is left to the user to fix.
+- Files created using `make.sh` are NOT ready to go out of the box. They are simply stripped versions of what I use on my system, and you should expect 
+to have to make many changes...
 
 ---
 
