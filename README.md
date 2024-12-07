@@ -40,6 +40,7 @@ You can also run `pip install -r requirements.txt` in this directory.
 - I recommend making a python virtual environment to run this project, but it is not required.
 - When you run `save_listening_data.py` for the first time, it should open a website asking for access to your spotify account. After you press agree, the code should save your data to `song_history.db`.
 - You can make the project by making the file `make.sh` executable and running `./make.sh` on unix based systems.
+- I recommend checking out the `production` branch in this repo if you're looking for automation. You can run, `git clone -b production --single-branch https://github.com/trevorswan11/Spotify-Tracker.git && cd Spotify-Tracker` to get this branch on your machine right now! It has a fleshed out make.sh file as well :)
 
 ---
 

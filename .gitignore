@@ -6,5 +6,4 @@
 history/
 .cache
 mywrapped
-get_wrapped.sh
 run_save_data.sh
