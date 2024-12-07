@@ -1,7 +1,36 @@
 #!/bin/bash
-echo "Creating necessary project files..."
+# Functions
+model_service() {
+    local file="$1"
+    echo "[Unit]" >> "$file"
+    echo "Description=Description to match timer" >> "$file"
+    echo "After=network.target" >> "$file"
+    echo "" >> "$file"
+    echo "[Service]" >> "$file"
+    echo "Type=oneshot" >> "$file"
+    echo "ExecStart=/bin/bash path_to_script" >> "$file"
+    echo "User=<your user>" >> "$file"
+    echo "Group=<your group> # Sometimes the same as your user" >> "$file"
+    echo "" >> "$file"
+    echo "[Install]" >> "$file"
+    echo "WantedBy=multi-user.target" >> "$file"
+}
+
+model_timer() {
+    local file="$1"
+    echo "[Unit]" >> "$file"
+    echo "Description=Description to match service" >> "$file"
+    echo "" >> "$file"
+    echo "[Service]" >> "$file"
+    echo "OnCalendar=DayOfWeek Year-Month-Day Hour:Minute:Second" >> "$file"
+    echo "Persistent=true" >> "$file"
+    echo "" >> "$file"
+    echo "[Install]" >> "$file"
+    echo "WantedBy=timers.target" >> "$file"
+}
 
 # Initial required files and folders
+echo "Creating necessary project files..."
 python3 -m venv myenv
 source myenv/bin/activate
 pip install --upgrade pip
@@ -111,32 +140,4 @@ echo "deactivate" >> wrapped.sh
 touch reset.log
 echo "All necessary project files created."
 
-# Functions
-model_service() {
-    local file="$1"
-    echo "[Unit]" >> "$file"
-    echo "Description=Description to match timer" >> "$file"
-    echo "After=network.target" >> "$file"
-    echo "" >> "$file"
-    echo "[Service]" >> "$file"
-    echo "Type=oneshot" >> "$file"
-    echo "ExecStart=/bin/bash path_to_script" >> "$file"
-    echo "User=<your user>" >> "$file"
-    echo "Group=<your group> # Sometimes the same as your user" >> "$file"
-    echo "" >> "$file"
-    echo "[Install]" >> "$file"
-    echo "WantedBy=multi-user.target" >> "$file"
-}
 
-model_timer() {
-    local file="$1"
-    echo "[Unit]" >> "$file"
-    echo "Description=Description to match service" >> "$file"
-    echo "" >> "$file"
-    echo "[Service]" >> "$file"
-    echo "OnCalendar=DayOfWeek Year-Month-Day Hour:Minute:Second" >> "$file"
-    echo "Persistent=true" >> "$file"
-    echo "" >> "$file"
-    echo "[Install]" >> "$file"
-    echo "WantedBy=timers.target" >> "$file"
-}
