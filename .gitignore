@@ -8,3 +8,8 @@ history/
 mywrapped
 get_wrapped.sh
 run_save_data.sh
+sys
+logs
+backup.sh
+new_cylce.sh
+*.log

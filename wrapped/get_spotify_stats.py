@@ -1,7 +1,7 @@
 import sqlite3
 from pathlib import Path
 from collections import Counter
-import sys
+from datetime import datetime
 
 # SQLite database file
 DB_FILE = 'song_history.db'
@@ -50,11 +50,9 @@ def get_top_artists(limit=5):
     artist_counts = Counter(artist for artist_list in artists for artist in artist_list.split(', '))
     return artist_counts.most_common(limit)
 
-def main(year: str = None):
-    # Add a header
-    if year is not None:
-        print(f"# Your {year} Spotify Wrapped!")
-        print('Compiled with the help of Spotify\'s API and the spotipy module.\n')
+def main(year: str):
+    print(f"# Your {year} Spotify Wrapped!")
+    print('Compiled with the help of Spotify\'s API and the spotipy module.\n')
     
     # Total number of songs
     total_songs = get_total_songs()
@@ -83,27 +81,23 @@ def main(year: str = None):
         print('Thanks for using my bootleg spotify wrapped, be sure to check out the official on [Spotify\'s website](https://www.spotify.com/us/wrapped/)!')
 
 if __name__ == '__main__':
-    if len(sys.argv) == 0:
-        # Check if the user wants to query an older database
-        doOlder = ['y', 'yes']
-        older = input("Do you want to query an old db (y/n): ")
-        
-        try:
-            # Check the users input to proceed
-            if older.lower() in doOlder:
-                which_year = input("Which year would you like to query: ")
-                DB_FILE = f"history/{which_year}_{DB_FILE}"
-            else:
-                DB_FILE = f"../{DB_FILE}"
-            
-            # Check if the requested DB exists
-            if not Path(DB_FILE).exists(): 
-                raise FileNotFoundError("Database not found with specified path.")
-        except:
+    # Check if the user wants to query an older database
+    which_year = None
+    doOlder = ['y', 'yes']
+    older = input("Do you want to query an old db (y/n): ")
+    
+    try:
+        # Check the users input to proceed
+        if older.lower() in doOlder:
+            which_year = input("Which year would you like to query: ")
+            DB_FILE = f"history/{which_year}_{DB_FILE}"
+        else:
             DB_FILE = f"../{DB_FILE}"
-        main()
-
-    # Allows proper calling from get_stats.sh
-    else:
+        
+        # Check if the requested DB exists
+        if not Path(DB_FILE).exists(): 
+            raise FileNotFoundError("Database not found with specified path.")
+    except:
         DB_FILE = f"../{DB_FILE}"
-        main(sys.argv[1]) 
+    main(datetime.now().year if which_year is None else which_year)
+

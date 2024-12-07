@@ -2,6 +2,7 @@ import requests
 import sqlite3
 import os
 from dotenv import load_dotenv
+from datetime import datetime, timedelta, timezone
 
 # Load the environment variables from .env
 load_dotenv()
@@ -55,6 +56,8 @@ def refresh_access_token():
 
 def fetch_recent_tracks(access_token):
     """Fetch recently played tracks from Spotify."""
+    current_time = datetime.now(timezone.utc)
+    last_24_hours = current_time - timedelta(hours=24)
     url = f'{API_BASE_URL}me/player/recently-played?limit=50'
     headers = {'Authorization': f'Bearer {access_token}'}
     response = requests.get(url, headers=headers)
@@ -66,14 +69,16 @@ def fetch_recent_tracks(access_token):
     tracks = []
     for item in data['items']:
         track = item['track']
-        played_at = item['played_at']
-        tracks.append({
-            'track_name': track['name'],
-            'artist': ', '.join(artist['name'] for artist in track['artists']),
-            'album': track['album']['name'],
-            'played_at': played_at,
-            'duration_ms': track['duration_ms']
-        })
+        played_at = datetime.strptime(item['played_at'], "%Y-%m-%dT%H:%M:%S.%fZ")
+        played_at = played_at.replace(tzinfo=timezone.utc)
+        if played_at > last_24_hours:
+            tracks.append({
+                'track_name': track['name'],
+                'artist': ', '.join(artist['name'] for artist in track['artists']),
+                'album': track['album']['name'],
+                'played_at': played_at.isoformat(),
+                'duration_ms': track['duration_ms']
+            })
     return tracks
 
 def save_tracks_to_db(tracks):
