@@ -11,5 +11,5 @@ run_save_data.sh
 sys
 logs
 backup.sh
-new_cylce.sh
+new_cycle.sh
 *.log
