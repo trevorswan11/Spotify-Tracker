@@ -46,4 +46,4 @@ to have to make many changes...
 
 ---
 
-*This was inspired by [@lizstip](https://www.tiktok.com/@lizstip?_t=8rxwoJUhOo6&_r=1) on TikTok, and obviously takes heavy inspiration from the official (Spotify Wrapped)[https://www.spotify.com/us/wrapped/].*
+*This was inspired by [@lizstip](https://www.tiktok.com/@lizstip?_t=8rxwoJUhOo6&_r=1) on TikTok, and obviously takes heavy inspiration from the official [Spotify Wrapped](https://www.spotify.com/us/wrapped/).*
