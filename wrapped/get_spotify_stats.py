@@ -71,7 +71,7 @@ def main(year: str):
     print()
 
     # Top 5 most popular artists
-    print('## Your Top 5 Songs')
+    print('## Your Top 5 Artists')
     for i, (artist, play_count) in enumerate(get_top_artists(), start=1):
         print(f"{i}. {artist} - {play_count} plays")
     
