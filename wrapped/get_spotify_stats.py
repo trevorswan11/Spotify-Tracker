@@ -51,34 +51,24 @@ def get_top_artists(limit=5):
     return artist_counts.most_common(limit)
 
 def main(year: str):
-    print(f"# Your {year} Spotify Wrapped!")
-    print('Compiled with the help of Spotify\'s API and the spotipy module.\n')
+    print(f"Your {year} Spotify Wrapped!\n")
     
-    # Total number of songs
     total_songs = get_total_songs()
-    print('## Unique Songs')
+    print('--=Unique Songs=--')
     print(f"You listened to {total_songs} unique songs this year!\n")
 
-    # Total minutes listened
     total_minutes = get_total_minutes_listened()
-    print('## Minutes Listened')
+    print('--=Minutes Listened=--')
     print(f"This year, you listened to {total_minutes:.2f} minutes of music!\n")
 
-    # Top 5 most popular songs
-    print('## Your Top 5 Songs')
+    print('--=Your Top 5 Songs=--')
     for i, (track_name, play_count) in enumerate(get_top_songs(), start=1):
         print(f"{i}. {track_name} - {play_count} plays")
     print()
 
-    # Top 5 most popular artists
-    print('## Your Top 5 Artists')
+    print('--=Your Top 5 Artists=--')
     for i, (artist, play_count) in enumerate(get_top_artists(), start=1):
         print(f"{i}. {artist} - {play_count} plays")
-    
-    # Thank you
-    if (year is not None):
-        print('\n## What a Year!')
-        print('Thanks for using my bootleg spotify wrapped, be sure to check out the official on [Spotify\'s website](https://www.spotify.com/us/wrapped/)!')
 
 if __name__ == '__main__':
     # Check if the user wants to query an older database
