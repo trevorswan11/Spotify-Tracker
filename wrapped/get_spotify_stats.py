@@ -55,7 +55,7 @@ def main(year: str):
     
     total_songs = get_total_songs()
     print('--=Unique Songs=--')
-    print(f"You listened to {total_songs} unique songs this year!\n")
+    print(f"You listened to {total_songs} songs this year!\n")
 
     total_minutes = get_total_minutes_listened()
     print('--=Minutes Listened=--')
